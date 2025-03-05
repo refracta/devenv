@@ -8,7 +8,7 @@ on:
 
 jobs:
   prepare:
-    runs-on: ubuntu-lab
+    runs-on: ubuntu-latest
     outputs:
       projects: ${{ steps.detect.outputs.projects }}
     steps:
@@ -24,7 +24,7 @@ jobs:
 
   build-and-push:
     needs: prepare
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-lab
     strategy:
       fail-fast: false
       matrix:
