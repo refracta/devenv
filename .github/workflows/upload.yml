@@ -32,12 +32,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build and push image
+      - name: Build image
         run: |
           TIMESTAMP=$(date -u +"%y%m%d%H%M")
           PROJECT_NAME=$(basename ${{ matrix.project }})
           IMAGE_NAME="refracta/$PROJECT_NAME"
           docker build -t $IMAGE_NAME:latest -t $IMAGE_NAME:$TIMESTAMP ${{ matrix.project }}
+
+      - name: Push image
+        run: |
           echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin
           docker push $IMAGE_NAME:$TIMESTAMP
           docker push $IMAGE_NAME:latest
