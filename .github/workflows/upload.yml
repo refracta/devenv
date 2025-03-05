@@ -26,6 +26,7 @@ jobs:
     needs: prepare
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         project: ${{ fromJson(needs.prepare.outputs.projects) }}
     steps:

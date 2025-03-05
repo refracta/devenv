@@ -43,12 +43,12 @@ RUN ln -sf $NODE_PATH/yarn /usr/bin/yarn
 
 # IntelliJ IDEA & PyCharm Setting
 WORKDIR /etc/jetbrains
-RUN wget -O idea.tar.gz https://download.jetbrains.com/idea/ideaIU-2024.3.4.tar.gz && \
-    tar -xzvf idea.tar.gz && \
-    rm idea.tar.gz && \
-    sh $(find ./ -maxdepth 1 -name "idea*")/bin/remote-dev-server.sh registerBackendLocationForGateway && \
-    sh $(find ./ -maxdepth 1 -name "idea*")/bin/remote-dev-server.sh installPlugins /usr/src 18824-codeglance-pro && \
-    sed -i  "s/-Xmx[0-9]\+m/-Xmx8192m/g" $(find $(find ./ -maxdepth 1 -name "idea*")/bin/ -name "*.vmoptions")
+RUN wget -O idea.tar.gz https://download.jetbrains.com/idea/ideaIU-2024.3.4.tar.gz
+RUN tar -xzvf idea.tar.gz
+RUN rm idea.tar.gz
+RUN sh $(find ./ -maxdepth 1 -name "idea*")/bin/remote-dev-server.sh registerBackendLocationForGateway
+RUN sh $(find ./ -maxdepth 1 -name "idea*")/bin/remote-dev-server.sh installPlugins /usr/src 18824-codeglance-pro
+RUN sed -i  "s/-Xmx[0-9]\+m/-Xmx8192m/g" $(find $(find ./ -maxdepth 1 -name "idea*")/bin/ -name "*.vmoptions")
 
 RUN wget -O pycharm.tar.gz https://download.jetbrains.com/python/pycharm-professional-2024.3.4.tar.gz && \
     tar -xzvf pycharm.tar.gz && \
