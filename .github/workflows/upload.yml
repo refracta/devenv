@@ -1,4 +1,4 @@
-name: upload-data
+name: upload
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
       - name: Detect projects with Dockerfile
         id: detect
         run: |
-          projects=$(find . -maxdepth 1 -type d \( ! -name . \) -exec test -f {}/Dockerfile \; -print | jq -R -s -c 'split("\n")[:-1]')
+          projects=$(find . -maxdepth 1 -type d \( ! -name . \) -exec test -f {}/Dockerfile \; -print | sed 's|^./||' | jq -R -s -c 'split("\n")[:-1]')
           echo "Detected projects: $projects"
           echo "projects=$projects" >> $GITHUB_ENV
           echo "projects=$projects" >> $GITHUB_OUTPUT
