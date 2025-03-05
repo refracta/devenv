@@ -32,11 +32,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set environment variables
+        run: |
+          echo "TIMESTAMP=$(date -u +"%y%m%d%H%M")" >> $GITHUB_ENV
+          echo "PROJECT_NAME=$(basename ${{ matrix.project }})" >> $GITHUB_ENV
+          echo "IMAGE_NAME=refracta/$PROJECT_NAME" >> $GITHUB_ENV
+
       - name: Build image
         run: |
-          TIMESTAMP=$(date -u +"%y%m%d%H%M")
-          PROJECT_NAME=$(basename ${{ matrix.project }})
-          IMAGE_NAME="refracta/$PROJECT_NAME"
           docker build -t $IMAGE_NAME:latest -t $IMAGE_NAME:$TIMESTAMP ${{ matrix.project }}
 
       - name: Push image
