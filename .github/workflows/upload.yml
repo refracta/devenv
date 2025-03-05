@@ -36,8 +36,7 @@ jobs:
         run: |
           echo "TIMESTAMP=$(date -u +"%y%m%d%H%M")" >> $GITHUB_ENV
           echo "PROJECT_NAME=$(basename ${{ matrix.project }})" >> $GITHUB_ENV
-          echo "IMAGE_NAME=refracta/$PROJECT_NAME" >> $GITHUB_ENV
-          cat $GITHUB_ENV
+          echo "IMAGE_NAME=refracta/$(basename ${{ matrix.project }})" >> $GITHUB_ENV
 
       - name: Build image
         run: |
