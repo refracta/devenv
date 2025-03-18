@@ -71,7 +71,7 @@ RUN pip install --upgrade pip && \
 # Install Infinity packages
 RUN pip uninstall jupyterlab -y && \
     pip install jupyterlab==4.0.0 sentencepiece && \
-    pip install easydict typed-argument-parser seaborn kornia gputil colorama omegaconf pandas timm==0.9.6 decord transformers torch==2.5.1 pytz pandas wandb colorama imageio einops openai httpx==0.20.0 opencv-python flash_attn
+    pip install easydict typed-argument-parser seaborn kornia gputil colorama omegaconf pandas timm==0.9.6 decord transformers torch==2.5.1 pytz pandas wandb colorama imageio einops openai httpx==0.20.0 opencv-python flash-attn==2.7.4.post1
 
 # SSH server setting
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
