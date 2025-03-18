@@ -1,0 +1,21 @@
+services:
+  ml-infinity-v2:
+    container_name: ml-infinity-v2
+    image: refracta/ml-infinity-v2
+    volumes:
+      - /home/refracta:/home/refracta
+      - /mnt/ext_sdb:/mnt/ext_sdb
+      - /mnt/ext_sdb/models/Infinity/.cache/huggingface:/root/.cache/huggingface
+    working_dir: /usr/src/
+    privileged: true
+    ipc: host
+#    network_mode: host
+    restart: unless-stopped
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    ports:
+      - "22"
