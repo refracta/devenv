@@ -93,7 +93,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip install --upgrade pip \
     && pip install ninja \
     && MAX_JOBS=1 pip install flash-attn --no-build-isolation \
-    && pip install opencv-fixer==0.2.5 \
-    && python -c "from opencv_fixer import AutoFix; AutoFix()"
+    && pip install opencv-fixer==0.2.5
+RUN python -c "from opencv_fixer import AutoFix; AutoFix()"
 
 CMD ["/bin/bash", "-c" , "/bin/bash /usr/sbin/entrypoint && tail -f /dev/null"]
