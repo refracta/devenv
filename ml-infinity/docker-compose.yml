@@ -5,7 +5,7 @@ services:
     volumes:
       - /home/refracta:/home/refracta
       - /mnt/ext_sdb:/mnt/ext_sdb
-      - /root/.cache/huggingface:/mnt/ext_sdb/models/Infinity/.cache/huggingface
+      - /mnt/ext_sdb/models/Infinity/.cache/huggingface:/root/.cache/huggingface
     working_dir: /usr/src/
     privileged: true
     ipc: host
