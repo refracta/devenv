@@ -69,7 +69,7 @@ RUN pip install --upgrade pip && \
     pip install kornia matplotlib opencv-python pandas pytorch-ignite pytorch-lightning ray scikit-image tensorboard torchmetrics torchsummary tqdm
 
 # Install Infinity packages
-RUN pip uninstall jupyterlab && \
+RUN pip uninstall jupyterlab -y && \
     pip install torch==2.5.1 jupyterlab==4.0.0 sentencepiece && \
     pip install easydict typed-argument-parser seaborn kornia gputil colorama omegaconf pandas timm==0.9.6 decord transformers torch==2.5.1 pytz pandas wandb colorama imageio einops openai httpx==0.20.0 opencv-python flash_attn
 
