@@ -66,7 +66,7 @@ ENV OPENCV_IO_ENABLE_OPENEXR="1"
 
 # Install Python and PyTorch packages
 RUN pip install --upgrade pip && \
-    pip install kornia matplotlib opencv-python pandas pytorch==2.5.1 pytorch-ignite pytorch-lightning ray scikit-image tensorboard torchmetrics torchsummary tqdm
+    pip install kornia matplotlib opencv-python==4.8.0.74 pandas torch==2.5.1 pytorch-ignite pytorch-lightning ray scikit-image tensorboard torchmetrics torchsummary tqdm
 
 RUN MAX_JOBS=8 pip install flash-attn==2.5.8 --no-build-isolation
 RUN pip upgrade transformers
