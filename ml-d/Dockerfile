@@ -20,8 +20,7 @@ RUN apt-get update && \
     wget curl \
     fzf \
     openssh-server \
-    git \
-    libgl1-mesa-glx
+    git
 
 # Set locales
 RUN locale-gen en_US.UTF-8
