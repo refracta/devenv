@@ -1,0 +1,18 @@
+services:
+  ml-d:
+    container_name: ml-d
+    image: refracta/ml-d
+    volumes:
+      - /home/refracta:/home/refracta
+      - /mnt/ext_sdb:/mnt/ext_sdb
+    working_dir: /usr/src/
+    privileged: true
+    ipc: host
+    network_mode: host
+    restart: unless-stopped
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
