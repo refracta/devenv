@@ -1,11 +1,10 @@
 services:
-  ml-infinity:
-    container_name: ml-infinity
-    image: refracta/ml-infinity
+  ml-prompt-optimizer:
+    container_name: ml-prompt-optimizer
+    image: refracta/ml-prompt-optimizer
     volumes:
       - /home/refracta:/home/refracta
       - /mnt/ext_sdb:/mnt/ext_sdb
-      - /mnt/ext_sdb/models/Infinity/.cache/huggingface:/root/.cache/huggingface
     working_dir: /usr/src/
     privileged: true
     ipc: host
