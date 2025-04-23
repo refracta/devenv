@@ -1,0 +1,21 @@
+services:
+  ml-k:
+    container_name: ml-k
+    image: refracta/ml-k
+    volumes:
+      - /home/refracta:/home/refracta
+      - /mnt/ext_sdb:/mnt/ext_sdb
+      - /mnt/ext_sdb/conda/pkgs:/opt/conda/pkgs
+    working_dir: /usr/src/
+    privileged: true
+    ipc: host
+#    network_mode: host
+    restart: unless-stopped
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    ports:
+      - "22"
